@@ -11,6 +11,7 @@ function App() {
     <>
       <div>
       <Searchbar></Searchbar> 
+      test
       <Filters></Filters>
       </div>
       
