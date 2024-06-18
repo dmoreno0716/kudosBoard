@@ -9,11 +9,9 @@ const Searchbar = () => {
             <input
               id="search-input"
               type="text"
+              style={{width: '400px', height: '40px'}}
+              placeholder="Search boards..."
             />
-            <button id="submit"
-            >
-              Submit
-            </button>
           </form>
     </div>
   )
