@@ -9,7 +9,7 @@ const Card = ({ card, onDelete }) => {
   const handleUpvote = async () => {
     try {
       await axios.patch(
-        `https://site-kudos-board-backend-exemplar.onrender.com/boards/${card.board_id}/cards/${card.card_id}/votes`,
+        `https://localhost:3001/boards/${card.board_id}/cards/${card.card_id}/votes`,
         {
           // Send the updated votes count to the backend
           votes: votes + 1,

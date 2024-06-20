@@ -18,7 +18,7 @@ const HomePage = () => {
 
   const fetchBoards = async () => {
     try {
-     //const response = await axios.get("https://site-kudos-board-backend-exemplar.onrender.com/boards");
+     const response = await axios.get("https://localhost:3001/boards");
       setBoards(response.data.boards);
     } catch (error) {
       console.error("Error fetching boards:", error);
@@ -94,7 +94,7 @@ const HomePage = () => {
 
   const deleteBoard = async (boardId) => {
     try {
-      const response = await fetch(``,
+      const response = await fetch(`https://localhost:3001/boards/${boardId}`,
          {
         method: "DELETE",
         headers: {

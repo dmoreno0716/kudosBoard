@@ -40,5 +40,52 @@ app.get('/boards', async (req, res) =>{
                 }
             })
         }
+        else{
+            boards = await prisma.board.findMany();
+        }
+        return res.json(boards);
     }
+    catch(e){
+        console.error(e);
+    }
+})
+
+app.post('/boards', async (req, res)=>{
+    const {title, author, description, category, image, cards} = req.body;
+    const newBoard = await prisma.board.create({
+        data: {
+            title,
+            author,
+            description,
+            category,
+            image,
+            cards
+        }
+    })
+    res.json(newBoard)
+})
+
+app.put('/boards/:id', async (req, res) =>{
+    const { id } = req.params
+    const {title, author, description, category, image, cards} = req.body
+    const updatedBoard = await prisma.board.update({
+        where: { id: pparseInt(id) },
+        data: {
+            title,
+            author,
+            description,
+            category,
+            image,
+            cards
+        }
+    })
+    res.json(updatedBoard)
+})
+
+app.delete('/boards/:id', async (req, res) =>{
+    const { id } = req.params
+    const deletedBoard = await prisma.book.delete({
+        where: { id: parseInt(id) }
+    })
+    res.json(deletedBoard);
 })

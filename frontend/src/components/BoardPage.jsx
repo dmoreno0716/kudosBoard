@@ -21,7 +21,7 @@ const BoardPage = () => {
   const fetchCards = async () => {
     try {
       const response = await axios.get(
-        `https://site-kudos-board-backend-exemplar.onrender.com/boards/${boardId}/cards`
+        `https://localhost:3001/boards/${boardId}/cards`
       );
       setCards(response.data.cards);
     } catch (error) {
@@ -32,7 +32,7 @@ const BoardPage = () => {
   const fetchBoardData = async () => {
     try {
       const response = await axios.get(
-        `https://site-kudos-board-backend-exemplar.onrender.com/boards/${boardId}`
+        `https://localhost:3001/boards/${boardId}`
       );
       const title = response.data.board.title;
       setBoardTitle(title);
@@ -44,7 +44,7 @@ const BoardPage = () => {
   const handleDelete = async (cardId) => {
     try {
       await axios.delete(
-        `https://site-kudos-board-backend-exemplar.onrender.com/boards/${boardId}/cards/${cardId}`
+        `https://localhost:3001/boards/${boardId}/cards/${cardId}`
       );
       fetchCards();
     } catch (error) {
