@@ -1,12 +1,148 @@
-/* .home-page{
-    background-color: whitesmoke;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-} */
-
-
-.search{
+body {
+    font-family: sans-serif;
+    margin: 0; /* Remove default margin */
+  }
+  
+  /* Banner styles */
+  .banner {
+    color: #fff;
+    padding: 20px;
     text-align: center;
-}
-
+  }
+  
+  .banner img {
+    width: 150px;
+    height: auto;
+    display: inline-block;
+  }
+  
+  /* Board grid styles */
+  .board-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+  }
+  
+  /* BoardPreview styles*/
+  .board-preview {
+    border: none;
+    padding: 15px;
+    background-color: #fff;
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+  }
+  
+  .board-preview:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Common styles for both buttons */
+  .button-common {
+    display: inline-block;
+    padding: 7px;
+    appearance: none;
+    border-radius: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    position: relative;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+    width: auto;
+    height: auto;
+  }
+  
+  .button-common:hover {
+    transform: scale(1.05);
+  }
+  
+  /* View Board button specific styles */
+  .view-board {
+    background-color: #fafbfc;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+      rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    color: #24292e;
+    padding: 6px 16px;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  }
+  
+  /* Delete Board button specific styles */
+  .delete-board {
+    background-color: teal;
+    border: 1px solid teal;
+    text-decoration: none;
+    transition-duration: 0.1s;
+    color: #ffffff;
+    margin-left: 10px;
+  }
+  
+  /* Search and Search button specific styles */
+  .search {
+    margin: 20px auto;
+    display: flex;
+    gap: 10px;
+    max-width: 600px;
+  }
+  
+  .search input {
+    padding: 8px;
+    flex: 1;
+    height: 36px;
+    box-sizing: border-box;
+    background-color: #fafbfc;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+      rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    color: #24292e;
+    padding: 6px 16px;
+  }
+  
+  /* Create Board button specific styles */
+  
+  .center-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .create-brd-btn {
+    background-color: #fafbfc;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+      rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    color: #24292e;
+  }
+  
+  /* Category Buttons */
+  
+  .category-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .category-button {
+    background-color: #fafbfc;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+      rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    color: #24292e;
+    margin-left: 8px;
+    padding: 6px 16px;
+  }
+  
+  @media (max-width: 768px) {
+    .search {
+      max-width: 100%;
+    }
+  }
+  

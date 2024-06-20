@@ -128,6 +128,7 @@ const HomePage = () => {
           type="text"
           placeholder="Search boards..."
           value={searchQuery}
+          style={{width: '600px', height: '30px'}}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </main>
@@ -165,7 +166,7 @@ const HomePage = () => {
         </button>
       </div>
 
-      <div className="center-button-container">
+      <div className="center-button-container" style={{textAlign: 'center'}}>
         <button className="button-common create-brd-btn" onClick={toggleForm}>
           Create a New Board
         </button>

@@ -1,18 +1,17 @@
 body {
-    font-family: sans-serif;
+  font-family: sans-serif;
+}
+
+footer {
+    position:absolute;
+    margin-top: 530px;
+    width:100%;
+    background-color:teal;
+    color: #fff;
+    padding: 10px;
+    opacity: 0.5;
   }
   
-  footer {
-      position: absolute;
-      margin-top: 470px;
-      width:100%;
-      background-color:purple;
-      color: #fff;
-      padding: 20px;
-      opacity: 0.5;
-  
-    }
-    
-    footer p {
-      margin: 0;
-    }
+  footer p {
+    margin: 0;
+  }
