@@ -5,7 +5,7 @@ import './Header.css';
 
 const Header = () => {
   return (
-    <header className="banner">
+    <header className="title">
     KudoBoard
     </header>
   );
