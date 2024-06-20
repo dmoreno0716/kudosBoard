@@ -20,7 +20,7 @@ model Board {
   description String
   category    String
   image       String
-  cards       Card[] @default([]) //related to cards
+  cards       Card[] 
 }
 
 model Card {
