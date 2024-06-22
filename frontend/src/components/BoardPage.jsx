@@ -21,9 +21,10 @@ const BoardPage = () => {
   const fetchCards = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/boards/${boardId}/cards`
+        `http://localhost:3001/boards/${boardId}`
       );
       setCards(response.data);
+      console.log(cards)
 
     } catch (error) {
       console.error("Error fetching cards:", error);
@@ -36,7 +37,9 @@ const BoardPage = () => {
         `http://localhost:3001/board/${boardId}`
       );
       const title = response.data.board.title;
+
       setBoardTitle(title);
+
     } catch (error) {
       console.error("Error fetching board data:", error);
     }
@@ -92,7 +95,7 @@ const BoardPage = () => {
             <Card
               key={card.card_id}
               card={card}
-              onDelete={() => handleDelete(card.card_id)}
+              onDelete={() => handleDelete(card.id)}
             />
           </div>
         ))}

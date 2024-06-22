@@ -87,30 +87,50 @@ app.delete('/boards/:id', async (req, res) =>{
     res.json(deletedBoard);
 })
 
-app.get('boards/:boardId/cards', async (req, res) => {
-    try {
-      const cards = await prisma.card.findMany();
-      res.json(cards);
-    } catch (error) {
-      console.error(error);
+// app.get('/boards/:boardId/cards', async (req, res) => {
+//   const { boardId } = req.params;
+//   try {
+//     cards = await prisma.board.findMany({
+//       where: {
+//           boardId : boardId
+//       }
+//   });
+//     if (!cards) {
+//       return res.status(404).json({ message: 'No cards found for this board' });
+//     }
+//     res.json(cards);
+//   } catch (error) {
+//     res.status(500).json({ message: 'Error fetching cards' });
+//   }
+// })
+
+app.get("/boards/:boardId", async (req, res) =>{
+  const boardId = parseInt(req.params.boardId)
+
+  const cards = await prisma.card.findMany(
+    {
+      where: {
+        boardId
+      }
     }
-  });
-  app.post('boards/:boardId/cards', async (req, res) => {
+  );
+  res.json(cards);
+})
+
+  app.post('/boards/:boardId/cards', async (req, res) => {
     const { boardId } = req.params;
     const { title, author, gif } = req.body;
-    const newCard = await prisma.card.create({
+    const newCard = await prisma.board.card.create({
       data: {
         boardId: parseInt(boardId, 10),
         title,
         author,
-        upvotes,
-        gif,
-        
+        gif 
       },
     });
     res.json(newCard);
   });
-  app.put('boards/:boardId/cards', async (req, res) => {
+  app.put('/boards/:boardId/cards', async (req, res) => {
     const { id } = req.params;
     const { title, author, upvotes, gif, boardId } = req.body;
     const updatedCard = await prisma.card.update({

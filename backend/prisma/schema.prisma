@@ -18,13 +18,12 @@ model Board {
   title       String
   author      String?
   category    String
-  image       String 
   cards       Card[] 
 }
 
 model Card {
   id          Int @id @default(autoincrement())
-  boardId     Int // foreign key to relate to board
+  boardId     Int    // foreign key to relate to board
   title       String
   author      String?
   upvotes     Int @default(0) // default value for upvotes

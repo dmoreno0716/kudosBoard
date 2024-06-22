@@ -104,11 +104,11 @@ const HomePage = () => {
 
       if (response.ok) {
         setBoards((prevBoards) =>
-          prevBoards.filter((board) => board.id !== id)
+          prevBoards.filter((board) => board.id !== board_id)
         );
       } else {
         const text = await response.text();
-        console.error(`Failed to delete Board ${boardId}.`, text);
+        console.error(`Failed to delete Board ${board_id}.`, text);
       }
     } catch (error) {
       console.error("Error deleting board:", error);
