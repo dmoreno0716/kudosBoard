@@ -18,8 +18,8 @@ const HomePage = () => {
 
   const fetchBoards = async () => {
     try {
-     const response = await axios.get("https://localhost:3001/boards");
-      setBoards(response.data.boards);
+     const response = await axios.get("http://localhost:3001/boards");
+      setBoards(response.data);
     } catch (error) {
       console.error("Error fetching boards:", error);
     }
@@ -63,19 +63,19 @@ const HomePage = () => {
     }
 
     return filteredBoards.map((board) => (
-      <div key={board.board_id} className="board-preview">
+      <div key={board.id} className="board-preview">
         <img
-          src={`https://picsum.photos/200/300?random=${board.board_id}`}
+          src={`https://picsum.photos/200/300?random=${board.id}`}
           alt={board.title}
         />
         <h3>{board.title}</h3>
         <p>{board.category}</p>
-        <Link to={`/boards/${board.board_id}`} className="button-common view-board">
+        <Link to={`/boards/${board.id}`} className="button-common view-board">
         View Board
       </Link>
         <button
           className="button-common delete-board"
-          onClick={() => deleteBoard(board.board_id)}
+          onClick={() => deleteBoard(board.id)}
         >
           Delete Board
         </button>
@@ -92,9 +92,9 @@ const HomePage = () => {
     setShowForm(false);
   };
 
-  const deleteBoard = async (boardId) => {
+  const deleteBoard = async (board_id) => {
     try {
-      const response = await fetch(`https://localhost:3001/boards/${boardId}`,
+      const response = await fetch(`http://localhost:3001/boards/${board_id}`,
          {
         method: "DELETE",
         headers: {
@@ -104,7 +104,7 @@ const HomePage = () => {
 
       if (response.ok) {
         setBoards((prevBoards) =>
-          prevBoards.filter((board) => board.board_id !== boardId)
+          prevBoards.filter((board) => board.id !== id)
         );
       } else {
         const text = await response.text();

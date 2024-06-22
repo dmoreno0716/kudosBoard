@@ -3,7 +3,6 @@ CREATE TABLE "Board" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "author" TEXT,
-    "description" TEXT NOT NULL,
     "category" TEXT NOT NULL,
     "image" TEXT NOT NULL,
 
@@ -15,7 +14,6 @@ CREATE TABLE "Card" (
     "id" SERIAL NOT NULL,
     "boardId" INTEGER NOT NULL,
     "title" TEXT NOT NULL,
-    "description" TEXT,
     "author" TEXT,
     "upvotes" INTEGER NOT NULL DEFAULT 0,
     "gif" TEXT NOT NULL,

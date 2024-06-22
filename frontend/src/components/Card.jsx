@@ -3,13 +3,13 @@ import "./Card.css";
 import axios from "axios";
 
 const Card = ({ card, onDelete }) => {
-  const { title, description, gif, owner } = card;
+  const { title, gif, owner } = card;
   const [votes, setVotes] = useState(card.votes || 0);
 
   const handleUpvote = async () => {
     try {
       await axios.patch(
-        `https://localhost:3001/boards/${card.board_id}/cards/${card.card_id}/votes`,
+        `http://localhost:3001/boards/${card.board_id}/cards/${card.card_id}/votes`,
         {
           // Send the updated votes count to the backend
           votes: votes + 1,
@@ -25,7 +25,6 @@ const Card = ({ card, onDelete }) => {
   return (
     <div className="card">
       <h3>{title}</h3>
-      <p>{description}</p>
       <img src={gif} alt="GIF" />
       <p>{owner}</p>
       <button className='upvote-button' onClick={handleUpvote}>Upvote: {votes}</button>

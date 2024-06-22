@@ -4,14 +4,13 @@ import './CardForm.css'
 
 const CardForm = ({ boardId, onSuccess, onClose }) => {
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
   const [gif, setGif] = useState("");
   const [owner, setOwner] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [gifOptions, setGifOptions] = useState([]);
   const [selectedGifUrl, setSelectedGifUrl] = useState("");
 
-  //const apiKey = process.env.REACT_APP_GIPHY_API_KEY;
+  const apiKey = import.meta.env.VITE_GIPHY_API_KEY;
 
   const searchGifs = async () => {
     try {
@@ -43,15 +42,14 @@ const CardForm = ({ boardId, onSuccess, onClose }) => {
 
   const createNewCard = async () => {
     try {
-      if (!title || !description || !gif) {
+      if (!title || !gif) {
         alert("Please fill out all fields");
         return;
       }
       const response = await axios.post(
-        `https://localhost:3001/boards/${boardId}/cards`,
+        `http://localhost:3001/boards/${boardId}/cards`,
         {
           title,
-          description,
           gif,
           owner,
         }
@@ -61,7 +59,6 @@ const CardForm = ({ boardId, onSuccess, onClose }) => {
 
       onSuccess(newCard);
       setTitle("");
-      setDescription("");
       setGif("");
       setOwner("");
 
@@ -84,12 +81,6 @@ const CardForm = ({ boardId, onSuccess, onClose }) => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
-        />
-        <input
-          type="text"
-          placeholder="Enter card description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
         />
         <input
           type="text"
