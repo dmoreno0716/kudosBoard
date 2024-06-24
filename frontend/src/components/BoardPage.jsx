@@ -23,9 +23,8 @@ const BoardPage = () => {
       const response = await axios.get(
         `http://localhost:3001/boards/${boardId}`
       );
-      setCards(response.data);
+      setCards(response.data.cards);
       console.log(cards)
-
     } catch (error) {
       console.error("Error fetching cards:", error);
     }
@@ -34,12 +33,10 @@ const BoardPage = () => {
   const fetchBoardData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/board/${boardId}`
+        `http://localhost:3001/boards/${boardId}`
       );
-      const title = response.data.board.title;
-
+      const title = response.data.title;
       setBoardTitle(title);
-
     } catch (error) {
       console.error("Error fetching board data:", error);
     }
@@ -61,7 +58,7 @@ const BoardPage = () => {
   };
 
   const handleCreateSuccess = (newCard) => {
-    if (newCard && newCard.card_id) {
+    if (newCard && newCard.id) {
       setCards([...cards, newCard]);
       setShowForm(false);
     } else {
