@@ -9,14 +9,13 @@ const Card = ({ card, onDelete }) => {
   const handleUpvote = async () => {
     try {
       await axios.patch(
-        `http://localhost:3001/boards/${card.board_id}/cards/${card.card_id}/votes`,
+        `http://localhost:3001/boards/${card.boardId}/cards/${card.id}/upvotes`,
         {
-          // Send the updated votes count to the backend
-          votes: votes + 1,
+          upvotes: votes + 1,
         }
       );
     
-      setVotes(votes + 1); // Update the local state with the new vote count
+      setVotes(votes + 1); 
     } catch (error) {
       console.error("Error upvoting card:", error);
     }

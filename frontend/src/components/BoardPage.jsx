@@ -42,10 +42,10 @@ const BoardPage = () => {
     }
   };
 
-  const handleDelete = async (cardId) => {
+  const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:3001/boards/${boardId}/card/${cardId}`
+        `http://localhost:3001/boards/${boardId}/cards/${id}`
       );
       fetchCards();
     } catch (error) {
@@ -66,10 +66,12 @@ const BoardPage = () => {
     }
   };
 
+ 
+
   return (
     <div>
       <Link to="/">
-        <span className="back-arrow"></span>
+        <span className="arrow">&#x25c0;</span>
       </Link>
       <Header />
       <h2> {boardTitle}</h2>
@@ -90,7 +92,7 @@ const BoardPage = () => {
         {cards.map((card) => (
           <div className="card-preview">
             <Card
-              key={card.card_id}
+              key={card.id}
               card={card}
               onDelete={() => handleDelete(card.id)}
             />

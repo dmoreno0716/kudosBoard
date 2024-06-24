@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import "./Homepage.css";
 import Newboardform from "./Newboardform";
@@ -92,9 +92,9 @@ const HomePage = () => {
     setShowForm(false);
   };
 
-  const deleteBoard = async (board_id) => {
+  const deleteBoard = async (boardId) => {
     try {
-      const response = await fetch(`http://localhost:3001/boards/${board_id}`,
+      const response = await fetch(`http://localhost:3001/boards/${boardId}`,
          {
         method: "DELETE",
         headers: {
@@ -104,11 +104,11 @@ const HomePage = () => {
 
       if (response.ok) {
         setBoards((prevBoards) =>
-          prevBoards.filter((board) => board.id !== board_id)
+          prevBoards.filter((board) => boardId !== board.id)
         );
       } else {
         const text = await response.text();
-        console.error(`Failed to delete Board ${board_id}.`, text);
+        console.error(`Failed to delete Board ${boardId}.`, text);
       }
     } catch (error) {
       console.error("Error deleting board:", error);

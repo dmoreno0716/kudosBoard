@@ -72,7 +72,7 @@ app.post('/boards', async (req, res)=>{
 app.delete('/boards/:boardId', async (req, res) =>{
     const { boardId } = req.params
     const deletedBoard = await prisma.board.delete({
-        where: { boardId: parseInt(boardId) }
+        where: { id: parseInt(boardId) }
     })
     res.json(deletedBoard);
 })
@@ -82,7 +82,7 @@ app.delete('/boards/:boardId', async (req, res) =>{
 app.get('/boards/:boardId', async (req, res) =>{
   const { boardId } = req.params;
   const board = await prisma.board.findUnique({
-    where: { boardId: parseInt(boardId) },
+    where: { id: parseInt(boardId) },
     include: {
       cards: true,
     },
@@ -98,13 +98,12 @@ app.get('/boards/:boardId', async (req, res) =>{
   //route to create a card
   app.post('/boards/:boardId/cards', async (req, res) => {
     const { boardId } = req.params;
-    const { title, author, upvotes, gif } = req.body;
+    const { title, author, gif } = req.body;
     const newCard = await prisma.card.create({
       data: {
         boardId: parseInt(boardId),
         title,
         author,
-        upvotes,
         gif
       },
     });
@@ -114,33 +113,34 @@ app.get('/boards/:boardId', async (req, res) =>{
   //route to delete card
   app.delete('/boards/:boardId/cards/:id', async (req, res) => {
     const { id } = req.params;
-    const deletedCard = await prisma.card.delete({
-      where: { id: parseInt(id) },
+    await prisma.card.delete({
+      where: { id : parseInt(id)},
     });
-    res.json(deletedCard);
-  });
+    res.send('Card deleted')
+    });
 
-  //route to upvote
-  app.patch('boards/:boardId/cards/:id/votes'), async (req, res) =>{
-    const {id} = req.params
-    const {upvotes} = req.body
 
-    try{
-      const updatedCard = await prisma.card.update({
-        where: {
-          id : parseInt(id),
-        },
-        data: {
-          upvotes: upvotes,
-        }
-      });
-      res.json(updatedCard)
-    }
-    catch (error) {
-      console.error("Error updating upvotes", error);
-      res.status(500).send("Failed to update votes");
-    }
-  }
+  // // route to upvote
+  // app.patch('/boards/:boardId/cards/:id/'), async (req, res) =>{
+  //   const {id} = req.params
+  //   const {upvotes} = req.body
+
+  //   try{
+  //     const updatedCard = await prisma.card.update({
+  //       where: {
+  //         id : parseInt(id),
+  //       },
+  //       data: {
+  //         upvotes: upvotes,
+  //       }
+  //     });
+  //     res.json(updatedCard)
+  //   }
+  //   catch (error) {
+  //     console.error("Error updating upvotes", error);
+  //     res.status(500).send("Failed to update votes");
+  //   }
+  // }
 
 
   app.listen(PORT, () =>{
