@@ -34,7 +34,7 @@ const Footer = () => {
       <li class="menu__item"><a class="menu__link" href="#">About</a></li>
       <li class="menu__item"><a class="menu__link" href="#">Services</a></li>
       <li class="menu__item"><a class="menu__link" href="#">Team</a></li>
-      <li class="menu__item"><a class="menu__link" href="#">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="https://github.com/dmoreno0716">Contact</a></li>
 
     </ul>
     <p>&copy; Copyright by Davey :D | All Rights Reserved</p>
