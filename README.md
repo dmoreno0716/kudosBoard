@@ -46,7 +46,7 @@ Submitted by: David Moreno
 
 ### Walkthrough Video
 
-https://youtu.be/67dDLde7Sc4
+https://youtu.be/vZUn3lIc6l0
 
 ### Reflection
 
