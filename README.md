@@ -1,11 +1,6 @@
-📝 `NOTE` Use this template to initialize the contents of a README.md file for your application. As you work on your assignment over the course of the week, update the required or stretch features lists to indicate which features you have completed by changing `[ ]` to `[x]`. (🚫 Remove this paragraph before submitting your assignment.)
-
 ## Unit Assignment: Kudos Board
 
 Submitted by: David Moreno
-
-Deployed Application (optional):
-[Kudos Board Deployed Site](ADD_LINK_HERE)
 
 ### Application Features
 
@@ -24,13 +19,13 @@ Deployed Application (optional):
     - [x] Boards should have a title, category, and author (optional).
   - [x] User can delete boards.
   
-- [ ] **Board Page**
-  - [ ] Displays a list of all cards for a board.
-    -  [ ] Each card features a text message.
-    -  [ ] Each card features a gif found using the [GIPHY API](https://developers.giphy.com/docs/api/).
-    -  [ ] Users can optionally sign the card as the author.  
--   [ ] Cards can be upvoted.
--   [ ] Cards can be deleted.
+- [X] **Board Page**
+  - [X] Displays a list of all cards for a board.
+    -  [X] Each card features a text message.
+    -  [X] Each card features a gif found using the [GIPHY API](https://developers.giphy.com/docs/api/).
+    -  [X] Users can optionally sign the card as the author.  
+-   [X] Cards can be upvoted.
+-   [X] Cards can be deleted.
 
 
 #### STRETCH FEATURES
@@ -51,7 +46,7 @@ Deployed Application (optional):
 
 ### Walkthrough Video
 
-https://youtu.be/B_aXCwZS-5Q
+https://youtu.be/vZUn3lIc6l0
 
 ### Reflection
 
